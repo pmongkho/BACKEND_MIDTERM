@@ -49,20 +49,24 @@ class Quote
         $query = 'SELECT  
             q.id,
             q.quote,
-            a.author as author,
-            c.category as category
+            a.author,
+            c.category
         FROM ' . $this->table . ' q
         LEFT JOIN
             categories c ON q.category_id = c.id
         LEFT JOIN
             authors a ON q.author_id = a.id
-        WHERE q.id = ?';
+        WHERE q.id = :id
+        OR (q.author_id= :author_id)
+        OR (q.category_id = :category_id)';
 
         // Prepared Statement
         $stmt = $this->conn->prepare($query);
 
         // Bind ID
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':author_id', $this->author_id);
+        $stmt->bindParam(':category_id', $this->category_id);
 
         // Execute query
         $stmt->execute();
