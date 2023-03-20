@@ -25,7 +25,7 @@ class Quote
     {
         $query = 'SELECT  
             q.id,
-            a.author
+            a.author,
             q.quote,
             c.category
         FROM ' . $this->table . ' q
