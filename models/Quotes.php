@@ -9,9 +9,9 @@ class Quote
     // properties
     public $id;
     public $category_id;
-    public $category_name;
+    public $category;
     public $author_id;
-    public $author_name;
+    public $author;
     public $quote;
 
     // Constructor with DB
@@ -25,9 +25,9 @@ class Quote
     {
         $query = 'SELECT  
             q.id,
-            a.author as author_name,
+            a.author
             q.quote,
-            c.category as category_name
+            c.category
         FROM ' . $this->table . ' q
         LEFT JOIN
             categories c ON q.category_id = c.id
@@ -49,8 +49,8 @@ class Quote
         $query = 'SELECT  
             q.id,
             q.quote,
-            a.author as author_name,
-            c.category as category_name
+            a.author as author,
+            c.category as category
         FROM ' . $this->table . ' q
         LEFT JOIN
             categories c ON q.category_id = c.id
@@ -73,8 +73,8 @@ class Quote
         // set properties
         $this->id = $row['id'];
         $this->quote = $row['quote'];
-        $this->author_name = $row['author_name'];
-        $this->category_name = $row['category_name'];
+        $this->author = $row['author'];
+        $this->category = $row['category'];
     }
 
     // Create

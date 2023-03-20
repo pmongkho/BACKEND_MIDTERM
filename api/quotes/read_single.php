@@ -20,8 +20,8 @@ $quote->read_single();
 $quoteArr = array(
     'id' => $quote->id,
     'quote' => $quote->quote,
-    'author_name' => $quote->author_name,
-    'category_name' => $quote->category_name
+    'author' => $quote->author,
+    'category' => $quote->category
 
 );
 
