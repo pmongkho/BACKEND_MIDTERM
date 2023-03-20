@@ -1,9 +1,6 @@
 <?php
 
 include_once '../../config/Database.php';
-include_once '../../models/Authors.php';
-include_once '../../models/Categories.php';
-
 
 class Quote
 {
