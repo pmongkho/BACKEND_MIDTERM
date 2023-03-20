@@ -12,6 +12,8 @@ $quote = new Quote($db);
 
 // Get ID 
 $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
+$quote->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+$quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 
 // Get quote
 $quote->read_single();
