@@ -14,13 +14,14 @@ exit();
 
 switch ($method) {
     case "GET":
-        if ($_SERVER['QUERY_STRING']){
-            include 'read_single.php';
-
-        }else{
+        if (!$_SERVER['QUERY_STRING']){
             include 'read.php';
+            break;
+        }else{
+            include 'read_single';
+            break;
         }
-        break;
+
     case "POST":
         include 'create.php';
         break;
