@@ -33,7 +33,7 @@ if ($num > 0) {
         );
 
         // push to data
-        array_push( $quote_item);
+        array_push($quotesArr, $quote_item);
     }
 
     // Turn to JSON & output
