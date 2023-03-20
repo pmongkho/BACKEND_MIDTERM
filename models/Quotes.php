@@ -73,8 +73,8 @@ class Quote
         // set properties
         $this->id = $row['id'];
         $this->quote = $row['quote'];
-        $this->author_id = $row['author_id'];
-        $this->category_id = $row['category_id'];
+        $this->author_name = $row['author_name'];
+        $this->category_name = $row['category_name'];
     }
 
     // Create
