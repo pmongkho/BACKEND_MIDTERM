@@ -23,7 +23,7 @@ class Database
     {
         $this->conn = null;
 
-        $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->db_name};";
+        $dsn = "pgsql:host={$this->host};dbname={$this->db_name};";
 
         try {
             // $this->conn = new PDO('pgsql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
