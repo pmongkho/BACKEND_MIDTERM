@@ -42,7 +42,7 @@ if ($quote->category_id) {
         die();
     }
 }
-if (!($quote->author_id || $quote->category_id || $quote->quote)) {
+if (!$quote->author_id || !$quote->category_id || !$quote->quote) {
     print json_encode(array('message' => 'Missing Required Parameters'));
     die();
 }
