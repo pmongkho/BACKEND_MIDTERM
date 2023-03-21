@@ -18,14 +18,44 @@ $quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 // Get quote
 $quote->read_single();
 
-// Create Array
-$quoteArr = array(
-    'id' => $quote->id,
-    'quote' => $quote->quote,
-    'author' => $quote->author,
-    'category' => $quote->category
+// Count rows
+$num = $result->rowCount();
 
-);
+if ($num > 0) {
+    // post array
+    $quotesArr = array();
 
-// Convert to JSON
-print_r(json_encode($quoteArr));
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+
+        $quote_item = array(
+            'id' => $id,
+            'quote' => $quote,
+            'author' => $author,
+            'category' => $category,
+        );
+
+        // push to data
+        array_push($quotesArr, $quote_item);
+    }
+
+    // Turn to JSON & output
+    print json_encode($quotesArr);
+} else {
+    // no posts
+    print json_encode(
+        array('message' => 'No quotes found')
+    );
+}
+
+// // Create Array
+// $quoteArr = array(
+//     'id' => $quote->id,
+//     'quote' => $quote->quote,
+//     'author' => $quote->author,
+//     'category' => $quote->category
+
+// );
+
+// // Convert to JSON
+// print_r(json_encode($quoteArr));
