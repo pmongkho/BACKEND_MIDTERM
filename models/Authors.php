@@ -43,12 +43,13 @@ class Author
         // Execture query
         $stmt->execute();
 
-        // Fetch row
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // // Fetch row
+        // $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // set properties
-        $this->id = $row['id'];
-        $this->author = $row['author'];
+        // // set properties
+        // $this->id = $row['id'];
+        // $this->author = $row['author'];
+        return $stmt;
 
     }
 
