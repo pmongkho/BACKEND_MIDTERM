@@ -59,7 +59,7 @@ if ($num > 0) {
 } else {
     // no posts
     print json_encode(
-        array('message' => 'No Quotes found')
+        array('message' => 'No Quotes Found')
     );
 }
 

@@ -22,5 +22,9 @@ $categoryArr = array(
     'category' => $category->category
 );
 
-// Convert to JSON
-print_r(json_encode($categoryArr));
+if (count($categoryArr) == 0) {
+    print "category_id Not Found";
+} else {
+    // Convert to JSON
+    print_r(json_encode($categoryArr));
+}

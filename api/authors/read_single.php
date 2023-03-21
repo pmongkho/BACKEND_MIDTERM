@@ -22,5 +22,10 @@ $authorArr = array(
     'author' => $author->author
 );
 
-// Convert to JSON
-print_r(json_encode($authorArr));
+
+if (count($authorArr) == 0) {
+    print "author_id Not Found";
+}else{
+    // Convert to JSON
+    print_r(json_encode($authorArr));
+}

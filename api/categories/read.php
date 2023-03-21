@@ -20,7 +20,6 @@ $num = $result->rowCount();
 if ($num > 0) {
     // post array
     $categoryArr = array();
-    $categoryArr['data'] = array();
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -32,7 +31,7 @@ if ($num > 0) {
         );
 
         // push to data
-        array_push($categoryArr['data'], $categoryItem);
+        array_push($categoryArr, $categoryItem);
     }
 
     // Turn to JSON & output
@@ -40,7 +39,7 @@ if ($num > 0) {
 } else {
     // no posts
     print json_encode(
-        array('message' => 'No Category found')
+        array('message' => 'No Category Found')
     );
 }
 ?>
