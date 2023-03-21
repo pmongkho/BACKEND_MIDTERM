@@ -57,7 +57,7 @@ class Quote
         LEFT JOIN
             authors a ON q.author_id = a.id
         WHERE q.id = :id
-        OR (q.author_id= :author_id)
+        OR (q.author_id = :author_id)
         OR (q.category_id = :category_id)';
 
         // Prepared Statement
@@ -79,6 +79,8 @@ class Quote
         $this->quote = $row['quote'];
         $this->author = $row['author'];
         $this->category = $row['category'];
+        $this->author_id = $row['author_id'];
+        $this->category_id = $row['category_id'];
     }
 
     // Create
