@@ -29,7 +29,7 @@ $author->id = $quote->author_id;
 $category = new Category($db);
 $category->id = $quote->category_id;
 
-if($author->read_single()->rowCount==0){
+if($quote->author_id && $author->read_single()->rowCount==0){
     print json_encode(array('message' => 'author_id Not Found'));
     die();
 }
