@@ -60,7 +60,6 @@ class Quote
         OR q.author_id = :author_id
         OR q.category_id = :category_id';
 
-
         // Prepared Statement
         $stmt = $this->conn->prepare($query);
 
@@ -73,7 +72,6 @@ class Quote
         $stmt->execute();
 
         return $stmt;
-
     }
 
     // Create
