@@ -15,9 +15,7 @@ $data = json_decode(file_get_contents("php://input"));
 $author->author = $data->author;
 
 if ($author->create()) {
-    print json_encode(
-        array('message' => 'Author Created')
-    );
+    $author->read_single();
 } else {
     print json_encode(
         array('message' => 'Author not Created')
