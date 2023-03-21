@@ -55,21 +55,32 @@ class Quote
         LEFT JOIN
             categories c ON q.category_id = c.id
         LEFT JOIN
-            authors a ON q.author_id = a.id
-        WHERE q.id = :id
-        OR q.author_id = :author_id
-        OR q.category_id = :category_id';
+            authors a ON q.author_id = a.id';
+        // WHERE q.id = :id
+        // OR q.author_id = :author_id
+        // OR q.category_id = :category_id
+        $query .= 'WHERE q.id= :id';
+
+        if(array_key_exists('author_id', $_GET)){
+            $query .= 'OR author_id = ?';
+            $params[] = $_GET["author_id"];
+        }
+        if(array_key_exists('category_id', $_GET)){
+            $query .= 'OR category_id = ?';
+            $params[] = $_GET["category_id"];
+        }
+
 
         // Prepared Statement
         $stmt = $this->conn->prepare($query);
 
         // Bind ID
-        $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':author_id', $this->author_id);
-        $stmt->bindParam(':category_id', $this->category_id);
+        // $stmt->bindParam(':id', $this->id);
+        // $stmt->bindParam(':author_id', $this->author_id);
+        // $stmt->bindParam(':category_id', $this->category_id);
 
         // Execute query
-        $stmt->execute();
+        $stmt->execute($params);
 
         // Fetch row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -79,8 +90,7 @@ class Quote
         $this->quote = $row['quote'];
         $this->author = $row['author'];
         $this->category = $row['category'];
-        $this->author_id = $row['author_id'];
-        $this->category_id = $row['category_id'];
+
     }
 
     // Create
@@ -118,8 +128,6 @@ class Quote
     // Update
     public function update()
     {
-        
-
         // Create query
         $query = 'UPDATE ' . $this->table . ' 
                   SET 
