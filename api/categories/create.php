@@ -15,7 +15,7 @@ $data = json_decode(file_get_contents("php://input"));
 if ($data->category) {
     $category->category = $data->category;
 } else {
-    print json_encode(array('message' => 'category_id Not Found'));
+    print json_encode(array('message' => 'Missing Required Parameters'));
     die();
 }
 
@@ -25,7 +25,7 @@ if ($category->create()) {
         "category" => $category->category
     );
 
-    print json_encode($categoryItem);
+    print_r(json_encode($categoryItem));
 } else {
     print json_encode(
         array('message' => 'Category not Created')

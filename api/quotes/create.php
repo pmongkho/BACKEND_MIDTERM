@@ -16,6 +16,17 @@ $quote->quote = $data->quote;
 $quote->author_id = $data->author_id;
 $quote->category_id = $data->category_id;
 
+if(!$quote->author_id){
+    print json_encode(array('message' => 'author_id Not Found'));
+    die();
+}else if(!$quote->category_id){
+    print json_encode(array('message' => 'category_id Not Found'));
+    die();
+}else if(!$quote->quote){
+    print json_encode(array('message' => 'Missing Required Parameters'));
+    die();
+}
+
 if($quote->create()){
     $quoteItem = array(
         "id" => $quote->id,
