@@ -18,12 +18,16 @@ $quote->category_id = $data->category_id;
 
 if(!$quote->author_id){
     print json_encode(array('message' => 'author_id Not Found'));
-
-}else if(!$quote->category_id){
+}
+if(!$quote->category_id){
     print json_encode(array('message' => 'category_id Not Found'));
 
-}else if(!$quote->quote){
+}
+if(!$quote->quote){
     print json_encode(array('message' => 'Missing Required Parameters'));
+}
+
+if (!($quote->author_id || $quote->category_id || $quote->quote)){
     die();
 }
 
