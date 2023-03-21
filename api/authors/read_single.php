@@ -9,9 +9,9 @@ $db = $database->connect();
 
 // Instatitiate blog post object
 $author = new Author($db);
-if (isset($_GET['id'])) {
+
 // Get ID 
-$author->id = isset($_GET['id']) ? $_GET['id'] : die();
+$author->id = isset($_GET['id']) ? $_GET['id'] : die("category_id Not Found");
 
 // Get quote
 $author->read_single();
@@ -25,7 +25,3 @@ $authorArr = array(
 print_r(json_encode($authorArr));
 
     
-}else{
-    
-  print "author_id Not Found";
-}
