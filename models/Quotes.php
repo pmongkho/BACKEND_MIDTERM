@@ -58,8 +58,7 @@ class Quote
             authors a ON q.author_id = a.id
         WHERE q.id = :id
         OR q.author_id = :author_id
-        OR q.category_id = :category_id
-';
+        OR q.category_id = :category_id';
 
 
         // Prepared Statement
@@ -74,13 +73,14 @@ class Quote
         $stmt->execute();
 
         // Fetch row
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // set properties
-        $this->id = $row['id'];
-        $this->quote = $row['quote'];
-        $this->author = $row['author'];
-        $this->category = $row['category'];
+        // // set properties
+        // $this->id = $row['id'];
+        // $this->quote = $row['quote'];
+        // $this->author = $row['author'];
+        // $this->category = $row['category'];
+        return $stmt;
 
     }
 

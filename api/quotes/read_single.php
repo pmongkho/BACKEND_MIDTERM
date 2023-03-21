@@ -16,7 +16,7 @@ $quote->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : null;
 $quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
 // Get quote
-$quote->read_single();
+$result = $quote->read_single();
 
 // Count rows
 $num = $result->rowCount();
