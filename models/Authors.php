@@ -47,9 +47,9 @@ class Author
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         extract($row);
         // set properties
-        if($id!=null){
+ 
         $this->id = $id;
-        $this->author = $author;}
+        $this->author = $author;
     }
 
     // POST
