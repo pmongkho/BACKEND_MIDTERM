@@ -16,13 +16,10 @@ $quote->quote = $data->quote;
 $quote->author_id = $data->author_id;
 $quote->category_id = $data->category_id;
 
-$quote->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : null;
-$quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
-
-if($quote->author_id==null){
+if(!isset($_GET['author_id'])){
     print json_encode(array('message' => 'author_id Not Found'));
 }
-if($quote->category_id==null){
+if(!isset($_GET['category_id'])){
     print json_encode(array('message' => 'category_id Not Found'));
 }
 
