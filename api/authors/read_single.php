@@ -9,7 +9,7 @@ $db = $database->connect();
 
 // Instatitiate blog post object
 $author = new Author($db);
-
+if (isset($_GET['id'])) {
 // Get ID 
 $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
@@ -21,11 +21,11 @@ $authorArr = array(
     'id' => $author->id,
     'author' => $author->author
 );
+// Convert to JSON
+print_r(json_encode($authorArr));
 
-
-if (count($authorArr) == 0) {
-    print "author_id Not Found";
+    
 }else{
-    // Convert to JSON
-    print_r(json_encode($authorArr));
+    
+  print "author_id Not Found";
 }

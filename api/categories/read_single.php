@@ -10,8 +10,9 @@ $db = $database->connect();
 // Instatitiate blog post object
 $category = new Category($db);
 
+if (isset($_GET['id'])) {
 // Get ID 
-$category->id = isset($_GET['id']) ? $_GET['id'] : die();
+$category->id = $_GET['id'];
 
 // Get quote
 $category->read_single();
@@ -22,9 +23,10 @@ $categoryArr = array(
     'category' => $category->category
 );
 
-if (count($categoryArr) == 0) {
-    print "category_id Not Found";
+// Convert to JSON
+print_r(json_encode($categoryArr));
+    
 } else {
-    // Convert to JSON
-    print_r(json_encode($categoryArr));
+    
+    print "category_id Not Found";
 }
