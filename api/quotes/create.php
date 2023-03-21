@@ -18,9 +18,11 @@ $quote->category_id = $data->category_id;
 
 if(!isset($_GET['author_id'])){
     print json_encode(array('message' => 'author_id Not Found'));
+    die();
 }
 if(!isset($_GET['category_id'])){
     print json_encode(array('message' => 'category_id Not Found'));
+    die();
 }
 
 if (!($quote->author_id || $quote->category_id || $quote->quote)){
