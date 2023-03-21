@@ -12,10 +12,11 @@ $author = new Author($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-$author->id = $data->id;
 $author->author = $data->author;
 
 if ($author->create()) {
+    $author->id = isset($_GET['id']) ? $_GET['id'] : die();
+
     $authorItem = array(
         "id" => $author->id,
         "author" => $author->author

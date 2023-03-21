@@ -70,11 +70,6 @@ class Author
 
         // Execute query
         if ($stmt->execute()) {
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // set properties
-            $this->id = $row['id'] ?? null;
-            $this->author = $row['category'] ?? null;
             return true;
         }
 
