@@ -62,11 +62,11 @@ class Quote
         $query .= 'WHERE q.id= :id';
 
         if(array_key_exists('author_id', $_GET)){
-            $query .= 'OR author_id = ?';
+            $query .= 'OR author_id = :author_id';
             $params[] = $_GET["author_id"];
         }
         if(array_key_exists('category_id', $_GET)){
-            $query .= 'OR category_id = ?';
+            $query .= 'OR category_id = :category_id';
             $params[] = $_GET["category_id"];
         }
 
@@ -75,9 +75,9 @@ class Quote
         $stmt = $this->conn->prepare($query);
 
         // Bind ID
-        // $stmt->bindParam(':id', $this->id);
-        // $stmt->bindParam(':author_id', $this->author_id);
-        // $stmt->bindParam(':category_id', $this->category_id);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':author_id', $this->author_id);
+        $stmt->bindParam(':category_id', $this->category_id);
 
         // Execute query
         $stmt->execute($params);
