@@ -24,6 +24,8 @@ $num = $result->rowCount();
 if ($num > 0) {
     // post array
     if ($num == 1) {
+        $row = $result->fetch();
+        extract($row);
         $quote_item = array(
             'id' => $id,
             'quote' => $quote,
