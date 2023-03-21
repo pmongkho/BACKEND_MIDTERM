@@ -48,8 +48,8 @@ class Author
         
         try{
         // set properties
-        $this->id = $row['id'];
-        $this->author = $row['author'];
+        $this->id ??= $row['id'];
+        $this->author ??= $row['author'];
 
         }catch(Exception $e){
 
