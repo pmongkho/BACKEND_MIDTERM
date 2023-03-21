@@ -72,14 +72,6 @@ class Quote
         // Execute query
         $stmt->execute();
 
-        // Fetch row
-        // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // // set properties
-        // $this->id = $row['id'];
-        // $this->quote = $row['quote'];
-        // $this->author = $row['author'];
-        // $this->category = $row['category'];
         return $stmt;
 
     }

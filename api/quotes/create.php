@@ -18,7 +18,7 @@ $quote->category_id = $data->category_id;
 
 if($quote->create()){
     print json_encode(
-        array('message'=>'Quote Created')
+        array($quote)
     );
 }else{
     print json_encode(
