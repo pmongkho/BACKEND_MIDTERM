@@ -23,11 +23,7 @@ $num = $result->rowCount();
 
 if ($num > 0) {
     // post array
-    $quotesArr = array();
-
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        extract($row);
-
+    if ($num == 1) {
         $quote_item = array(
             'id' => $id,
             'quote' => $quote,
@@ -35,16 +31,33 @@ if ($num > 0) {
             'category' => $category,
         );
 
-        // push to data
-        array_push($quotesArr, $quote_item);
+        print_r(json_encode($quote_item));
+    } else {
+        $quotesArr = array();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            extract($row);
+
+            $quote_item = array(
+                'id' => $id,
+                'quote' => $quote,
+                'author' => $author,
+                'category' => $category,
+            );
+
+            // push to data
+            array_push($quotesArr, $quote_item);
+        }
+
+        // Turn to JSON & output
+        print json_encode($quotesArr);
+
     }
 
-    // Turn to JSON & output
-    print json_encode($quotesArr);
 } else {
     // no posts
     print json_encode(
-        array('message' => 'No quotes found')
+        array('message' => 'No Quotes found')
     );
 }
 
