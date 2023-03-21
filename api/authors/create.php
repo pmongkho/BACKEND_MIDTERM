@@ -13,6 +13,9 @@ $author = new Author($db);
 $data = json_decode(file_get_contents("php://input"));
 
 $author->author = $data->author;
+if ( $author->author == null){
+    die(array('message' => 'author_id Not Found'));
+}
 
 if ($author->create()) {
 
