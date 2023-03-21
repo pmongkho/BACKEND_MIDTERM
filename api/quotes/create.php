@@ -17,9 +17,14 @@ $quote->author_id = $data->author_id;
 $quote->category_id = $data->category_id;
 
 if($quote->create()){
-    print json_encode(
-        array($quote)
+    $quoteItem = array(
+        "id" => $quote->id,
+        "author_id"=> $quote->author_id,
+        "category_id"=> $quote->category_id
     );
+
+    print json_encode($quoteItem);
+
 }else{
     print json_encode(
         array('message' => 'Quote not Created')
