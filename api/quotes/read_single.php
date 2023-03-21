@@ -53,7 +53,6 @@ if ($num > 0) {
 
         // Turn to JSON & output
         print json_encode($quotesArr);
-
     }
 
 } else {
