@@ -29,31 +29,31 @@ $author->id = $quote->author_id;
 $category = new Category($db);
 $category->id = $quote->category_id;
 
-if($quote->author_id && $author->read_single()->rowCount==0){
+if ($quote->author_id && $author->read_single()->rowCount == 0) {
     print json_encode(array('message' => 'author_id Not Found'));
     die();
 }
-if($quote->author_id && $category->read_single()->rowCount == 0){
+if ($quote->category_id && $category->read_single()->rowCount == 0) {
     print json_encode(array('message' => 'category_id Not Found'));
     die();
 }
 
-if (!($quote->author_id || $quote->category_id || $quote->quote)){
+if (!($quote->author_id || $quote->category_id || $quote->quote)) {
     print json_encode(array('message' => 'Missing Required Parameters'));
     die();
 }
 
-if($quote->create()){
+if ($quote->create()) {
     $quoteItem = array(
         "id" => $quote->id,
         "quote" => $quote->quote,
-        "author_id"=> $quote->author_id,
-        "category_id"=> $quote->category_id
+        "author_id" => $quote->author_id,
+        "category_id" => $quote->category_id
     );
 
     print json_encode($quoteItem);
 
-}else{
+} else {
     print json_encode(
         array('message' => 'Quote not Created')
     );
