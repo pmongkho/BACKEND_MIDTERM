@@ -56,9 +56,7 @@ class Quote
             categories c ON q.category_id = c.id
         LEFT JOIN
             authors a ON q.author_id = a.id
-        WHERE q.author_id = :author_id
-        OR (q.id = :id
-        OR q.category_id = :category_id)';
+        WHERE q.author_id = :author_id';
 
         // Prepared Statement
         $stmt = $this->conn->prepare($query);
