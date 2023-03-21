@@ -62,15 +62,3 @@ if ($num > 0) {
         array('message' => 'No Quotes Found')
     );
 }
-
-// // Create Array
-// $quoteArr = array(
-//     'id' => $quote->id,
-//     'quote' => $quote->quote,
-//     'author' => $quote->author,
-//     'category' => $quote->category
-
-// );
-
-// // Convert to JSON
-// print_r(json_encode($quoteArr));
