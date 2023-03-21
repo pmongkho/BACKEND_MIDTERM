@@ -46,14 +46,11 @@ class Author
         // Fetch row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        try{
+
         // set properties
-        $this->id ??= $row['id'];
-        $this->author ??= $row['author'];
+        $this->id = $row['id'] ?? null;
+        $this->author = $row['author'] ?? null;
 
-        }catch(Exception $e){
-
-        }
 
     }
 
