@@ -33,7 +33,7 @@ if ($quote->author_id) {
         die();
     }
 }
-else if ($quote->category_id) {
+if ($quote->category_id) {
     $category->read_single();
     if ($category->id == null) {
         print json_encode(
@@ -41,7 +41,8 @@ else if ($quote->category_id) {
         );
         die();
     }
-}else if (!($quote->author_id || $quote->category_id || $quote->quote)) {
+}
+if (!($quote->author_id || $quote->category_id || $quote->quote)) {
     print json_encode(array('message' => 'Missing Required Parameters'));
     die();
 }
