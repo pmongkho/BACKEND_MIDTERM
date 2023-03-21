@@ -11,17 +11,22 @@ $db = $database->connect();
 $author = new Author($db);
 
 // Get ID 
-$author->id = isset($_GET['id']) ? $_GET['id'] : die("category_id Not Found");
+$author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
 // Get quote
 $author->read_single();
 
-// Create Array
+if($author_id != null){
+    // Create Array
 $authorArr = array(
     'id' => $author->id,
     'author' => $author->author
 );
 // Convert to JSON
 print_r(json_encode($authorArr));
+}else{
+    print "category_id Not Found";
+}
+
 
     
