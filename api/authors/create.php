@@ -12,9 +12,9 @@ $author = new Author($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-try{
-    $author->author = $data->author;
-}catch(Exception $e){
+if($data->author){
+        $author->author = $data->author;
+}else{
         die(array('message' => 'author_id Not Found'));
 }
 
