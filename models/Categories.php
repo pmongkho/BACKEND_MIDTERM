@@ -47,8 +47,8 @@ class Category
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set properties
-        $this->id = $row['id'];
-        $this->category = $row['category'];
+        $this->id = $row['id'] ?? null;
+        $this->category = $row['category'] ?? null;
 
     }
 

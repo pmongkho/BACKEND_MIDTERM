@@ -12,10 +12,12 @@ $category = new Category($db);
 
 
 // Get ID 
-$category->id = isset($_GET['id']) ? $_GET['id'] : die("category_id Not Found");
+$category->id = isset($_GET['id']) ? $_GET['id'] : die("");
 
 // Get quote
 $category->read_single();
+
+if ($category->id != null) {
 
 // Create Array
 $categoryArr = array(
@@ -25,4 +27,12 @@ $categoryArr = array(
 
 // Convert to JSON
 print_r(json_encode($categoryArr));
+}else{
+    // no posts
+    print json_encode(
+        array('message' => 'category_id Not Found')
+    );
+}
+
+
     

@@ -50,8 +50,6 @@ class Author
         // set properties
         $this->id = $row['id'] ?? null;
         $this->author = $row['author'] ?? null;
-
-
     }
 
     // POST
