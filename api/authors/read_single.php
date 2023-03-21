@@ -12,10 +12,10 @@ $author = new Author($db);
 
 // Get ID 
 $author->id = isset($_GET['id']) ? $_GET['id'] : die();
-if($author->id != null){
+
 // Get quote
 $author->read_single();
-
+if($author->id != null){
 
     // Create Array
 $authorArr = array(
