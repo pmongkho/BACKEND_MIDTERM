@@ -25,7 +25,10 @@ $authorArr = array(
 // Convert to JSON
 print_r(json_encode($authorArr));
 }else{
-    print "author_id Not Found";
+    // no posts
+    print json_encode(
+        array('message' => 'author_id Not Found')
+    );
 }
 
 
