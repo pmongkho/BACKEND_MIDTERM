@@ -16,7 +16,7 @@ $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 // Get quote
 $author->read_single();
 
-if($author_id != null){
+if($author->id != null){
     // Create Array
 $authorArr = array(
     'id' => $author->id,
@@ -25,7 +25,7 @@ $authorArr = array(
 // Convert to JSON
 print_r(json_encode($authorArr));
 }else{
-    print "category_id Not Found";
+    print "author_id Not Found";
 }
 
 
