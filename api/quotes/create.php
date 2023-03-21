@@ -33,7 +33,7 @@ if($quote->author_id && $author->read_single()->rowCount==0){
     print json_encode(array('message' => 'author_id Not Found'));
     die();
 }
-if($category->read_single()->rowCount == 0){
+if($quote->author_id && $category->read_single()->rowCount == 0){
     print json_encode(array('message' => 'category_id Not Found'));
     die();
 }
