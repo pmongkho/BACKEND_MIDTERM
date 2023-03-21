@@ -55,20 +55,11 @@ class Quote
         LEFT JOIN
             categories c ON q.category_id = c.id
         LEFT JOIN
-            authors a ON q.author_id = a.id';
-        // WHERE q.id = :id
-        // OR q.author_id = :author_id
-        // OR q.category_id = :category_id
-        $query .= 'WHERE q.id= :id';
-
-        if(array_key_exists('author_id', $_GET)){
-            $query .= 'OR author_id = :author_id';
-            $params[] = $_GET["author_id"];
-        }
-        if(array_key_exists('category_id', $_GET)){
-            $query .= 'OR category_id = :category_id';
-            $params[] = $_GET["category_id"];
-        }
+            authors a ON q.author_id = a.id
+        WHERE q.id = :id
+        OR q.author_id = :author_id
+        OR q.category_id = :category_id
+';
 
 
         // Prepared Statement
@@ -80,7 +71,7 @@ class Quote
         $stmt->bindParam(':category_id', $this->category_id);
 
         // Execute query
-        $stmt->execute($params);
+        $stmt->execute();
 
         // Fetch row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
