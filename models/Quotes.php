@@ -199,7 +199,8 @@ class Quote
     public function delete()
     {
         // Create query
-        $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $query = 'DELETE FROM ' . $this->table . ' 
+        WHERE EXISTS (SELECT * FROM quotes WHERE id=:id)';
 
         // Prepare statement
         $stmt = $this->conn->prepare($query);
