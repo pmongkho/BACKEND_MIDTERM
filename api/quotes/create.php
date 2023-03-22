@@ -48,8 +48,11 @@ if (!$quote->author_id || !$quote->category_id || !$quote->quote) {
 }
 
 if ($quote->create()) {
+    $result = $quote->read_single();
+    $row = $result->fetch();
+    extract($row);
     $quoteItem = array(
-        "id" => $quote->id,
+        "id" => $id,
         "quote" => $quote->quote,
         "author_id" => $quote->author_id,
         "category_id" => $quote->category_id
