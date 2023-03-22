@@ -51,7 +51,7 @@ if ($quote->category_id) {
 if ($quote->id) {
     $quoteTemp = clone $quote;
     $quoteTemp->find_quote_id();
-    if ($quote->id == null) {
+    if ($quoteTemp->id == null) {
         print json_encode(
             array('message' => 'No Quotes Found')
         );
