@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../config/Database.php';
-include_once '../../models/quotes.php';
+include_once '../../models/Quotes.php';
 include_once '../../models/Authors.php';
 include_once '../../models/Categories.php';
 

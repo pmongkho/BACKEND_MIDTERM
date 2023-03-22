@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
 
 include_once '../../config/Database.php';
 include_once '../../models/Authors.php';
