@@ -36,6 +36,7 @@ if ($quote->author_id) {
         die();
     }
 }
+
 if ($quote->category_id) {
     $category->read_single();
     if ($category->id == null) {
@@ -75,7 +76,7 @@ if ($quote->update()) {
         "category_id" => $quote->$category_id
     );
 
-    print json_encode($quoteItem);
+    print_r(json_encode($quoteItem));
 } else {
     print json_encode(
         array('message' => 'quote not Updated')
