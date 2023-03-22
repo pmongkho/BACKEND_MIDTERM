@@ -21,7 +21,7 @@ if ($quote->delete()) {
     $quote->find_quote_id();
     if ($quote->id ==  null) {
         print json_encode(
-            array('message' => 'Quote Not Found')
+            array('message' => 'No Quotes Found')
         );
     } else {
         print json_encode(

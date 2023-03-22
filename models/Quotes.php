@@ -115,6 +115,9 @@ class Quote
 
         // set properties
         $this->id = $row['id'] ?? null;
+        $this->quote = $row['quote'] ?? null;
+        $this->author_id = $row['author_id'] ?? null;
+        $this->category_id = $row['category_id'] ?? null;
     }
 
     // Create

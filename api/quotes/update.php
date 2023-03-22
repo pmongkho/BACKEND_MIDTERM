@@ -48,7 +48,8 @@ if ($quote->category_id) {
 
 //Check to see pass test
 if ($quote->quote) {
-    $quoteTemp = $quote;
+    $quoteTemp = new Quote($db);
+    $quoteTemp = clone $quote;
     $quoteTemp->find_quote();
     if ($quoteTemp->quote == null) {
         print json_encode(
@@ -65,7 +66,7 @@ if (!$quote->id || !$quote->author_id || !$quote->category_id || !$quote->quote)
 
 // Update quote
 if ($quote->update()) {
-    $quote->find_quote();
+    $quote->find_quote_id();
 
     $quoteItem = array(
         "id" => $quote->$id,
