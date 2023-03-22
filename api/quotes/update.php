@@ -20,7 +20,7 @@ $quote->quote = $data->quote;
 $quote->author_id = $data->author_id;
 $quote->category_id = $data->category_id;
 
-//error handline
+//error handling
 $author = new Author($db);
 $author->id = $quote->author_id;
 
@@ -50,24 +50,26 @@ if ($quote->quote) {
     $row = $quote->find_quote();
     if ($row->rowCount == 0) {
         print json_encode(
-            array('message' => 'category_id Not Found')
+            array('message' => 'No Quotes Found')
         );
         die();
     }
 }
 
-if (!$quote->author_id || !$quote->category_id || !$quote->quote) {
+if (!$quote->id || !$quote->author_id || !$quote->category_id || !$quote->quote) {
     print json_encode(array('message' => 'Missing Required Parameters'));
     die();
 }
 
 // Update quote
 if ($quote->update()) {
+    $row = $quote->find_quote();
+    extract($row);
     $quoteItem = array(
-        "id" => $quote->id,
-        "quote" => $quote->quote,
-        "author_id" => $quote->author_id,
-        "category_id" => $quote->category_id
+        "id" => $id,
+        "quote" => $quote,
+        "author_id" => $author_id,
+        "category_id" => $category_id
     );
 
     print json_encode($quoteItem);
