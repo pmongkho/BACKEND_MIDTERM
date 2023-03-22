@@ -16,8 +16,12 @@ $data = json_decode(file_get_contents("php://input"));
 // Set ID to delete
 $quote->id = $data->id;
 
+$quoteTemp = clone $quote;
+
+$quoteTemp->find_quote_id();
+
 // Delete quote
-if ($quote->delete()) {
+if ($quote->delete() && $quoteTemp->id !=null) {
 
         print json_encode(
             array('id' => $quote->id)
