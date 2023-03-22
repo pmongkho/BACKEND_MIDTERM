@@ -24,7 +24,7 @@ $quoteTemp->find_quote_id();
 if ($quote->delete() && $quoteTemp->id !=null) {
 
         print json_encode(
-            array('id' => $quote->id)
+            array('id' => $quoteTemp->id)
         );
 
 } else {
