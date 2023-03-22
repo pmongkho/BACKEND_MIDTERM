@@ -17,19 +17,14 @@ $data = json_decode(file_get_contents("php://input"));
 $quote->id = $data->id;
 
 // Delete quote
-if ($quote->delete()) {
-    if ($quote->id ==  null) {
-        print json_encode(
-            array('message' => 'No Quotes Found')
-        );
-    } else {
+if ($quote->delete() && $quote->find_quote_id()->id) {
+
         print json_encode(
             array('id' => $quote->id)
         );
-    }
 
 } else {
     print json_encode(
-        array('message' => 'Quote not deleted')
+        array('message' => 'No Quotes Found')
     );
 }
