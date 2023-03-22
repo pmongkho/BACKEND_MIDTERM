@@ -18,8 +18,8 @@ $quote->id = $data->id;
 
 // Delete quote
 if ($quote->delete()) {
-    $row = $quote->read_single()->rowCount();
-    if ($row == 0) {
+    $quote->find_quote_id();
+    if ($quote->id ==  null) {
         print json_encode(
             array('message' => 'Quote Not Found')
         );

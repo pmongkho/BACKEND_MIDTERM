@@ -97,6 +97,25 @@ class Quote
         $this->category_id = $row['category_id'] ?? null;
 
     }
+    public function find_quote_id(){
+
+        $query = 'SELECT * from quotes WHERE id=:id';
+
+        // Prepared Statement
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':id', $this->id);
+
+        // Execute query
+        $stmt->execute();
+
+        // Fetch row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        // set properties
+        $this->id = $row['id'] ?? null;
+    }
 
     // Create
     public function create()
