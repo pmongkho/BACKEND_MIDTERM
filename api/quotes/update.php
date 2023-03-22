@@ -48,10 +48,10 @@ if ($quote->category_id) {
 
 //Check to see pass test
 if ($quote->quote) {
-    $quoteTemp = new Quote($db);
-    $quoteTemp = clone $quote;
-    $quoteTemp->find_quote();
-    if ($quoteTemp->quote == null) {
+    // $quoteTemp = new Quote($db);
+    // $quoteTemp = clone $quote;
+    // $quoteTemp->find_quote();
+    if ($quote->quote == null) {
         print json_encode(
             array('message' => 'No Quotes Found')
         );

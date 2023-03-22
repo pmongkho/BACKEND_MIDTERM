@@ -205,6 +205,10 @@ class Quote
 
         // Execute query
         if ($stmt->execute()) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // set properties
+            $this->id = $row['id'] ?? null;
             return true;
         }
 
