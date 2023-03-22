@@ -45,10 +45,12 @@ if ($quote->category_id) {
         die();
     }
 }
+
 //Check to see pass test
 if ($quote->quote) {
-    $row = $quote->find_quote();
-    if ($row->rowCount == 0) {
+    $quoteTemp = $quote;
+    $quoteTemp->find_quote();
+    if ($quoteTemp->quote == null) {
         print json_encode(
             array('message' => 'No Quotes Found')
         );
@@ -63,13 +65,13 @@ if (!$quote->id || !$quote->author_id || !$quote->category_id || !$quote->quote)
 
 // Update quote
 if ($quote->update()) {
-    $row = $quote->find_quote();
-    extract($row);
+    $quote->find_quote();
+
     $quoteItem = array(
-        "id" => $id,
-        "quote" => $quote,
-        "author_id" => $author_id,
-        "category_id" => $category_id
+        "id" => $quote->$id,
+        "quote" => $quote->$quote,
+        "author_id" => $quote->$author_id,
+        "category_id" => $quote->$category_id
     );
 
     print json_encode($quoteItem);
