@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
 
 include_once '../../config/Database.php';
 include_once '../../models/Quotes.php';
@@ -24,9 +24,9 @@ if ($quote->delete()) {
             array('message' => 'No Quotes Found')
         );
     } else {
-        print json_encode(
+        print_r(json_encode(
             array('id' => $quote->id)
-        );
+        ));
     }
 
 } else {

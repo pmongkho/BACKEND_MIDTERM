@@ -95,8 +95,8 @@ class Quote
         $this->quote = $row['quote'] ?? null;
         $this->author_id= $row['author_id'] ?? null;
         $this->category_id = $row['category_id'] ?? null;
-
     }
+
     public function find_quote_id(){
 
         $query = 'SELECT * from quotes WHERE id=:id';
