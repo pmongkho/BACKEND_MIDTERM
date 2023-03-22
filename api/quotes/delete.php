@@ -17,7 +17,7 @@ $data = json_decode(file_get_contents("php://input"));
 $quote->id = $data->id;
 
 // Delete quote
-if ($quote->delete() && $quote->find_quote_id()->rowCount != null) {
+if ($quote->delete() && $quote->id != null) {
 
         print json_encode(
             array('id' => $quote->id)
