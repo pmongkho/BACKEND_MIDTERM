@@ -67,8 +67,7 @@ if (!$quote->id || !$quote->author_id || !$quote->category_id || !$quote->quote)
 
 // Update quote
 if ($quote->update()) {
-    $quote->find_quote_id();
-
+    
     $quoteItem = array(
         "id" => $quote->$id,
         "quote" => $quote->$quote,
