@@ -1,4 +1,4 @@
-<?php 
+<?php error_reporting(0);
 
 include_once '../../config/Database.php';
 include_once '../../models/Quotes.php';
@@ -69,10 +69,10 @@ if (!$quote->id || !$quote->author_id || !$quote->category_id || !$quote->quote)
 if ($quote->update()) {
 
     $quoteItem = array(
-        "id" => $quote->$id,
-        "quote" => $quote->$quote,
-        "author_id" => $quote->$author_id,
-        "category_id" => $quote->$category_id
+        "id" => $quote->id,
+        "quote" => $quote->quote,
+        "author_id" => $quote->author_id,
+        "category_id" => $quote->category_id
     );
 
     print_r(json_encode($quoteItem));

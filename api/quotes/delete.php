@@ -1,4 +1,4 @@
-<?php error_reporting(0);
+<?php 
 
 include_once '../../config/Database.php';
 include_once '../../models/Quotes.php';
@@ -18,15 +18,14 @@ $quote->id = $data->id;
 
 // Delete quote
 if ($quote->delete()) {
-    $quote->find_quote_id();
     if ($quote->id ==  null) {
         print json_encode(
             array('message' => 'No Quotes Found')
         );
     } else {
-        print_r(json_encode(
+        print json_encode(
             array('id' => $quote->id)
-        ));
+        );
     }
 
 } else {
