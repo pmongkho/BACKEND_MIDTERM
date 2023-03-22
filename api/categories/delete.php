@@ -19,7 +19,7 @@ $category->id = $data->id;
 // Delete category
 if ($category->delete()) {
     print json_encode(
-        array('message' => 'Category Deleted')
+        array('id' => $category->id)
     );
 } else {
     print json_encode(

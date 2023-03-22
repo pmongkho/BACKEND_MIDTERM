@@ -19,7 +19,7 @@ $author->id = $data->id;
 // Delete Author
 if ($author->delete()) {
     print json_encode(
-        array('message' => 'Author Deleted')
+        array('id' => $author->id)
     );
 } else {
     print json_encode(

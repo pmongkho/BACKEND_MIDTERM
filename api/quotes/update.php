@@ -2,6 +2,8 @@
 
 include_once '../../config/Database.php';
 include_once '../../models/quotes.php';
+include_once '../../models/Authors.php';
+include_once '../../models/Categories.php';
 
 // Instatiate DB & connect
 $database = new Database();
@@ -18,11 +20,57 @@ $quote->quote = $data->quote;
 $quote->author_id = $data->author_id;
 $quote->category_id = $data->category_id;
 
+//error handline
+$author = new Author($db);
+$author->id = $quote->author_id;
+
+$category = new Category($db);
+$category->id = $quote->category_id;
+
+if ($quote->author_id) {
+    $author->read_single();
+    if ($author->id == null) {
+        print json_encode(
+            array('message' => 'author_id Not Found')
+        );
+        die();
+    }
+}
+if ($quote->category_id) {
+    $category->read_single();
+    if ($category->id == null) {
+        print json_encode(
+            array('message' => 'category_id Not Found')
+        );
+        die();
+    }
+}
+//Check to see pass test
+if ($quote->quote) {
+    $row = $quote->find_quote();
+    if ($row->rowCount == 0) {
+        print json_encode(
+            array('message' => 'category_id Not Found')
+        );
+        die();
+    }
+}
+
+if (!$quote->author_id || !$quote->category_id || !$quote->quote) {
+    print json_encode(array('message' => 'Missing Required Parameters'));
+    die();
+}
+
 // Update quote
 if ($quote->update()) {
-    print json_encode(
-        array('message' => 'quote Updated')
+    $quoteItem = array(
+        "id" => $quote->id,
+        "quote" => $quote->quote,
+        "author_id" => $quote->author_id,
+        "category_id" => $quote->category_id
     );
+
+    print json_encode($quoteItem);
 } else {
     print json_encode(
         array('message' => 'quote not Updated')

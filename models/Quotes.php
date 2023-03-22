@@ -74,6 +74,22 @@ class Quote
         return $stmt;
     }
 
+    public function find_quote(){
+
+        $query = 'SELECT * from quotes WHERE quote=:quote';
+
+        // Prepared Statement
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':quote', $this->quote);
+
+        // Execute query
+        $stmt->execute();
+
+        return $stmt;
+
+    }
+
     // Create
     public function create()
     {

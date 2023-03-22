@@ -19,7 +19,7 @@ $quote->id = $data->id;
 // Delete quote
 if ($quote->delete()) {
     print json_encode(
-        array('message' => 'Quote Deleted')
+        array('id' => $quote->id)
     );
 } else {
     print json_encode(
